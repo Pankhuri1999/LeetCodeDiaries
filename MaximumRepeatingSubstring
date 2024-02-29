@@ -1,0 +1,19 @@
+MAXIMUM REPEATING SUBSTRING
+For a string sequence, a string word is k-repeating if word concatenated k times is a substring of sequence. 
+The word's maximum k-repeating value is the highest value k where word is k-repeating in sequence. If word is not a substring of sequence, word's maximum k-repeating value is 0.
+Given strings sequence and word, return the maximum k-repeating value of word in sequence.
+
+
+class Solution {
+public:
+    int maxRepeating(string sequence, string word) {
+        int cnt = 0;
+        string tmp = word;
+        while(sequence.find(tmp) != string::npos)
+        {
+            cnt++;
+            tmp = tmp + word;
+        }
+        return cnt;
+    }
+};
