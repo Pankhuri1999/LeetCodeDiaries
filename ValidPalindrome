@@ -1,0 +1,32 @@
+VALID PALINDROME
+A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. 
+Alphanumeric characters include letters and numbers.
+Given a string s, return true if it is a palindrome, or false otherwise.
+
+Code - 
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        if ((s.size() == 0) || (s.size()==1))
+        {
+            return true;
+        }
+        string ans;
+        transform(s.begin(), s.end(), s.begin(), ::tolower);
+
+        for(int i=0; i<s.length(); i++){
+            if(isalnum(s[i])){
+                ans+=s[i];
+            }
+        }
+        for(int i = 0; i<ans.size()/2; i++)
+        {
+            if(ans[i] != ans[ans.size()-1-i])
+            {
+                cout<<"+"<<ans[i]<<"   +++++++++"<<ans[ans.size()-1-i];
+                return false;
+            }
+        }
+        return true;
+    }
+};
