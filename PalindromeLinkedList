@@ -1,0 +1,35 @@
+PALINDROME LINKED LIST
+Given the head of a singly linked list, return true if it is a palindrome or false otherwise.
+
+
+Code -
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+   
+        vector<int> vecy;
+        while(head) 
+        {
+            vecy.push_back(head->val);
+            head = head->next;
+        }
+        
+        int l = 0, r = vecy.size() - 1;
+        while (l < r && (vecy[l] == vecy[r])) {
+            l = l + 1;
+            r= r - 1;
+        }
+        return l >= r;
+        
+    }
+};
