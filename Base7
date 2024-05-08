@@ -1,0 +1,32 @@
+BASE 7
+Given an integer num, return a string of its base 7 representation.
+
+
+
+Code - 
+class Solution {
+public:
+    string convertToBase7(int num) {
+        int numy = 0, powy = 0, q, r;
+        // if (num<0)
+        // {
+        //     nump = num * (-1);
+        // }
+       while(num != 0)
+       {
+           q = num/7;
+           r = num%7;
+           num = q;
+           numy = numy + r * pow(10,powy);
+           powy = powy + 1;
+       } 
+       numy = numy + q * pow(10, powy);
+       cout<<powy<<"++++++++++"<<"hihi"<<numy<<"------------";
+       if (num<0)
+       {
+        numy = numy * (-1);
+        cout<<"hih7989i"<<numy;
+       }
+       return to_string(numy);
+    }
+};
