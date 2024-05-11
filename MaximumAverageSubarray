@@ -1,0 +1,23 @@
+MAXIMUM AVERAGE SUBARRAY
+You are given an integer array nums consisting of n elements, and an integer k.
+Find a contiguous subarray whose length is equal to k that has the maximum average value and return this value. Any answer with a calculation error less than 10-5 will be accepted.
+
+
+Code - 
+class Solution {
+public:
+    double findMaxAverage(vector<int>& nums, int k) {
+        int sumy = 0;
+        for(int i = 0; i<k; i++) sumy = sumy + nums[i];
+        int mxSum = sumy;
+        int left = 0, right = k;
+        while(right<nums.size())
+        {
+            sumy = sumy - nums[left] + nums[right];
+            left++;
+            right++;
+            mxSum = max(mxSum, sumy);
+        }
+        return (double) mxSum/k;
+    }
+};
