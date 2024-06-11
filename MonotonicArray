@@ -1,0 +1,21 @@
+MONOTONIC ARRAY
+An array is monotonic if it is either monotone increasing or monotone decreasing.
+An array nums is monotone increasing if for all i <= j, nums[i] <= nums[j]. An array nums is monotone decreasing if for all i <= j, nums[i] >= nums[j].
+Given an integer array nums, return true if the given array is monotonic, or false otherwise.
+
+
+Code -
+class Solution {
+public:
+    bool isMonotonic(vector<int>& nums) {
+        vector<int> vecy1 = nums;
+        vector<int> vecy2 = nums;
+        sort(vecy1.begin(), vecy1.end());
+        sort(vecy2.begin(), vecy2.end(), greater<int>());
+        if ((nums == vecy1) || (nums == vecy2))
+        {
+            return true;
+        }
+        return false;
+    }
+};
