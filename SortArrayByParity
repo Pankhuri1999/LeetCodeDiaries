@@ -1,0 +1,41 @@
+SORT ARRAY BY PARITY
+Given an integer array nums, move all the even integers at the beginning of the array followed by all the odd integers.
+Return any array that satisfies this condition.
+
+
+Code - 
+class Solution {
+public:
+    vector<int> sortArrayByParity(vector<int>& nums) {
+        if (nums.size()==1)
+        {
+            return nums;
+        }
+        vector<int> vecy1;
+        vector<int> vecy2;
+        for(int i=0; i<nums.size(); i++)
+        {
+           if (nums[i]%2 == 0)
+           {
+            vecy1.push_back(nums[i]);
+            cout<<"even--"<<nums[i];
+           }
+           else
+           {
+            vecy2.push_back(nums[i]);
+            cout<<"pdd**"<<nums[i]<<endl;
+           }
+        }
+        for(auto i:vecy2)
+        {
+            vecy1.push_back(i);
+        }
+        return vecy1;
+    //    vector<int> merged(vecy1.size() + vecy2.size()); 
+  
+    // merge(vecy1.begin(), vecy1.end(), vecy2.begin(), vecy2.end(), 
+    //       merged.begin()); 
+    //       return merged;
+
+    }
+};
