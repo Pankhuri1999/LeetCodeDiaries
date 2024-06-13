@@ -1,0 +1,37 @@
+SELF DIVIDING NUMBER - 
+A self-dividing number is a number that is divisible by every digit it contains.
+For example, 128 is a self-dividing number because 128 % 1 == 0, 128 % 2 == 0, and 128 % 8 == 0.
+A self-dividing number is not allowed to contain the digit zero.
+Given two integers left and right, return a list of all the self-dividing numbers in the range [left, right].
+
+Code - 
+class Solution {
+public:
+    vector<int> selfDividingNumbers(int left, int right) {
+        vector<int> vecy;
+        for(int i = left; i<=right; i++)
+        {
+            int tmp = i;
+            bool flag;
+            while(tmp>0)
+            {
+                int rem = tmp%10;
+                if (( rem != 0) && (i%rem==0))
+                {
+                    flag = true;
+                }
+                else
+                {
+                    flag = false;
+                    break;
+                }
+                tmp = tmp/10;
+            }
+            if (flag==true)
+            {
+                vecy.push_back(i);
+            }
+        }
+        return vecy;
+    }
+};
