@@ -1,0 +1,37 @@
+CHECK IF NUMBER HAS EQUAL DIGIT COUNT AND EQUAL DIGIT VALUE
+You are given a 0-indexed string num of length n consisting of digits.
+Return true if for every index i in the range 0 <= i < n, the digit i occurs num[i] times in num, otherwise return false
+
+
+
+Code - 
+class Solution {
+public:
+    bool digitCount(string num) {
+        unordered_map<int, int> M;
+    for (int i = 0; i<num.size(); i++) 
+    {
+        if (M.find(num[i]-'0') == M.end()) 
+        {
+            M.insert(make_pair(num[i]-'0', 1));
+        }
+        else
+        {
+            M[num[i]-'0']++;
+        }
+    }
+    for(int i = 0; i<num.size(); i++)
+    {
+        if (num[i]-'0' != M[i])
+        {
+           return false;
+        }
+        // else
+        // {
+        //     return false;
+        // }
+    }
+    return true;
+
+    }
+};
