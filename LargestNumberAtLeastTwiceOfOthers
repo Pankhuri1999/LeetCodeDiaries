@@ -1,0 +1,23 @@
+LARGEST NUMBER AT LEAST TWICE OF OTHERS
+You are given an integer array nums where the largest integer is unique.
+Determine whether the largest element in the array is at least twice as much as every other number in the array. If it is, return the index of the largest element, or return -1 otherwise.
+
+
+Code- 
+class Solution {
+public:
+    int dominantIndex(vector<int>& nums) {
+        vector<int> vecy = nums;
+        sort(vecy.begin(), vecy.end());
+        cout<<vecy[vecy.size()-2]<<endl;
+        for(int i = 0; i<nums.size(); i++)
+        {
+            if ((nums[i] >=  2 * vecy[vecy.size()-2]) && (nums[i] == vecy[vecy.size()-1]))
+            {
+                cout<<nums[i]<<" --- "<<i<<endl;
+                return i;
+            }
+        }
+        return -1;
+    }
+};
