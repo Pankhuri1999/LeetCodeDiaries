@@ -1,0 +1,26 @@
+DUPLICATE ZEROS -
+Given a fixed-length integer array arr, duplicate each occurrence of zero, shifting the remaining elements to the right.
+Note that elements beyond the length of the original array are not written. Do the above modifications to the input array in place and do not return anything.
+
+
+
+Code - 
+class Solution {
+public:
+    void duplicateZeros(vector<int>& arr) {
+        vector<int> vecy;
+        for(auto i : arr)
+        {
+            vecy.push_back(i);
+            if (i == 0)
+            {
+                vecy.push_back(0);
+            }
+        }
+        vector<int> sub_vector(vecy.begin() + 0,
+                           vecy.begin() + arr.size());
+        arr.clear();
+       // cout<<arr.size()<<endl;
+        arr = sub_vector;
+    }
+};
