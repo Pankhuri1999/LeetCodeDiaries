@@ -1,0 +1,28 @@
+FIND COMMON ELEMENTS BETWEEN TWO ARRAYS - 
+You are given two integer arrays nums1 and nums2 of sizes n and m, respectively. Calculate the following values:
+
+answer1 : the number of indices i such that nums1[i] exists in nums2.
+answer2 : the number of indices i such that nums2[i] exists in nums1.
+Return [answer1,answer2].
+
+
+Code - 
+class Solution {
+public:
+    int common(vector<int> vecy1, vector<int> vecy2)
+    {
+        int cnt = 0;
+        for(int i = 0; i<vecy1.size(); i++)
+        {
+            //auto it = std::find(vecy2.begin(), vecy2.end(), vecy1[i]);
+            if (std::find(vecy2.begin(), vecy2.end(), vecy1[i]) != vecy2.end())
+            {
+                cnt = cnt + 1;
+            }
+        }
+        return cnt;
+    }
+    vector<int> findIntersectionValues(vector<int>& nums1, vector<int>& nums2) {
+        return {common(nums1, nums2), common(nums2, nums1)};
+    }
+};
