@@ -1,0 +1,39 @@
+DAY OF THE YEAR - 
+Given a string date representing a Gregorian calendar date formatted as YYYY-MM-DD, return the day number of the year.
+
+
+Code - 
+class Solution {
+public:
+    int dayOfYear(string date) {
+        int year = stoi(date.substr(0, 4)), month = stoi(date.substr(5,2)), day = stoi(date.substr(8,2));
+        int ans = 0;
+        cout<<"1- "<<ans<<endl;
+
+            for(int i = 1; i<month; i++)
+            {
+        if (i==1) {ans += 31;}        
+        else if (i==2) {ans += 28;}
+        else if (i==3) {ans += 31;}
+        else if (i==4) {ans += 30;}
+        else if (i==5) {ans += 31;}
+        else if (i==6) {ans += 30;}
+        else if (i==7) {ans += 31;}
+        else if (i==8) {ans += 31;}
+        else if (i==9) {ans += 30;}
+        else if (i==10) {ans += 31;}
+        else if (i==11) {ans += 30;}
+        cout<<"2- "<<ans<<endl;
+        }
+        
+        ans = ans + day;
+        cout<<"3- "<<ans<<endl;
+        
+        if (((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) &&
+            (month > 2))
+        {
+            return ans + 1;
+        }
+        return ans;
+    }
+};
