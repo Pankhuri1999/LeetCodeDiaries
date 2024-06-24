@@ -1,0 +1,28 @@
+MINIMUM AVERAGE OF SMALLEST AND LARGEST ELEMENT - 
+You have an array of floating point numbers averages which is initially empty. You are given an array nums of n integers where n is even.
+You repeat the following procedure n / 2 times:
+Remove the smallest element, minElement, and the largest element maxElement, from nums.
+Add (minElement + maxElement) / 2 to averages.
+Return the minimum element in averages.
+
+
+
+Code - 
+class Solution {
+public:
+    double minimumAverage(vector<int>& nums) {
+        int n = nums.size();
+        vector<float> vecy;
+        for(int i = 1; i<=n/2; i++)
+        {
+            sort(nums.begin(), nums.end());
+            //float tmp = (float)(nums[0] + nums[nums.size()-1])/2;
+            vecy.push_back((float)(nums[0] + nums[nums.size()-1])/2);
+            //cout<<nums[0]<< " -- " <<nums[nums.size()-1]<<endl;
+            nums.erase(nums.begin());
+            nums.erase(nums.begin() + (nums.size()-1));
+        }
+        sort(vecy.begin(), vecy.end());
+        return vecy[0];
+    }
+};
