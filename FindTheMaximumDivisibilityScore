@@ -1,0 +1,37 @@
+FIND THE MAXIMUM DIVISIBILITY SCORE - 
+You are given two integer arrays nums and divisors.
+
+The divisibility score of divisors[i] is the number of indices j such that nums[j] is divisible by divisors[i].
+
+Return the integer divisors[i] with the maximum divisibility score. If multiple integers have the maximum score, return the smallest one.
+
+
+Code - 
+class Solution {
+public:
+    int maxDivScore(vector<int>& nums, vector<int>& divisors) {
+        int freq1 , freq2 = 0, numy = INT_MAX;
+        for(auto i : divisors)
+        {
+            freq1 = 0;
+            for(auto j : nums)
+            {
+                if (j % i == 0)
+                {
+                    freq1++;
+                }
+
+            }
+            if ( freq1 > freq2)
+            {
+                freq2 = freq1;
+                numy = i;
+            }
+            else if (freq1 == freq2)
+            {
+                numy = min(numy, i);
+            }
+        }
+        return numy;
+    }
+};
