@@ -1,0 +1,34 @@
+UNIQUE NUMBER OF OCCURRENCES - 
+Given an array of integers arr, return true if the number of occurrences of each value in the array is unique or false otherwise.
+
+Code -
+class Solution {
+public:
+    bool uniqueOccurrences(vector<int>& arr) {
+        map<int, int> M;
+        set<int> sety;
+    for (int i = 0; i < arr.size(); i++) {
+        //sety.insert(arr[i]);
+        if (M.find(arr[i]) == M.end()) {
+            M[arr[i]] = 1;
+        }
+        else {
+            M[arr[i]]++;
+        }
+    }
+    for (auto i : M)
+    {
+        sety.insert(i.second);
+        // cout << i.first << " \t\t\t " << i.second << endl;
+    }
+    if (sety.size() == M.size())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
+    }
+};
