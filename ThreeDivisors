@@ -1,0 +1,33 @@
+THREE DIVISORS - 
+Given an integer n, return true if n has exactly three positive divisors. Otherwise, return false.
+
+An integer m is a divisor of n if there exists an integer k such that n = k * m.
+
+
+Code - 
+class Solution {
+public:
+    bool isThree(int n) {
+        int cnt = 0;
+       for(int i = 1; i<=n; i++)
+       {
+           if (n % i == 0)
+           {
+            cout<<"before: "<<cnt<<endl;
+            cnt++;
+            cout<<"after: "<<cnt<<" i: "<<i;
+
+           }
+        //   else if (cnt >= 3)
+        //    {
+        //     cout<<" break"<<endl;
+        //      break;
+        //    }
+       }  
+       if (cnt == 3)
+       { 
+        return true;
+       }
+       return false; 
+    }
+};
