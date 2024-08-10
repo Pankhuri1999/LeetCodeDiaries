@@ -1,0 +1,80 @@
+RFORMAT DATE -
+Given a date string in the form Day Month Year, where:
+
+Day is in the set {"1st", "2nd", "3rd", "4th", ..., "30th", "31st"}.
+Month is in the set {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"}.
+Year is in the range [1900, 2100].
+Convert the date string to the format YYYY-MM-DD, where:
+
+YYYY denotes the 4 digit year.
+MM denotes the 2 digit month.
+DD denotes the 2 digit day.
+
+
+Code -
+
+class Solution {
+public:
+    string reformatDate(string date) {
+        string d = "", m = "", y = "";
+       // if (isdigit(date[0]) == true) d = d + date[0];
+
+        if (isdigit(date[1]) == true) 
+        {
+            d = d + date[0];
+            d = d + date[1];
+            date.erase(0, 5);
+            cout<<"####"<<date;
+        }
+        else 
+        {
+            d = d + "0" + date[0];
+            date.erase(0, 4);
+            cout<<"^^^^^^^^^^^^"<<date;
+        }
+
+    // unordered_map<string, string>months;
+    // months =     {{ "Jan", "01" },
+    //     { "Feb", "02" },
+    //     { "Mar", "03" },
+    //     { "Apr", "04" },
+    //     { "May", "05" },
+    //     { "Jun", "06" },
+    //     { "Jul", "07" },
+    //     { "Aug", "08" },
+    //     { "Sep", "09" },
+    //     { "Oct", "10" },
+    //     { "Nov", "11" },
+    //     { "Dec", "12" }
+    // };
+
+    map<string, string> months
+    {
+        { "Jan", "01" },
+        { "Feb", "02" },
+        { "Mar", "03" },
+        { "Apr", "04" },
+        { "May", "05" },
+        { "Jun", "06" },
+        { "Jul", "07" },
+        { "Aug", "08" },
+        { "Sep", "09" },
+        { "Oct", "10" },
+        { "Nov", "11" },
+        { "Dec", "12" }
+    };
+
+    string r = date.substr(0, 3);
+    //return "-----" + r;
+    m = m + months.at(date.substr(0,3));
+    date.erase(0, 4);
+    y = y + date + "-" + m + "-" + d;
+    return y;
+
+
+        // for(int i = 0; i<date.size(); i++)
+        // {
+        //    if (isdigit(date[i]))
+        // }
+    }
+};
