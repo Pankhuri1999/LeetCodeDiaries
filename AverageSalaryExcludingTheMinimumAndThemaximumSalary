@@ -1,0 +1,19 @@
+AVERAGE SALARY EXCLUDING THE MINIMUM AND MAXIMUM SALARY - 
+You are given an array of unique integers salary where salary[i] is the salary of the ith employee.
+
+Return the average salary of employees excluding the minimum and maximum salary. Answers within 10-5 of the actual answer will be accepted.
+
+
+Code - 
+class Solution {
+public:
+    double average(vector<int>& salary) {
+       sort(salary.begin(), salary.end()) ;
+       double avg = 0;
+       for(int i = 1; i<salary.size()-1; i++)
+       {
+            avg = avg + salary[i];
+       }
+       return avg/(salary.size()-2);
+    }
+};
