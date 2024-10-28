@@ -1,0 +1,44 @@
+CHECK IF ONE STRING SWAP CAN MAKE STRINGS EQUAL - 
+You are given two strings s1 and s2 of equal length. A string swap is an operation where you choose two indices in a string (not necessarily different) and swap the characters at these 
+indices.
+Return true if it is possible to make both strings equal by performing at most one string swap on exactly one of the strings. Otherwise, return false.
+
+Code - 
+class Solution {
+public:
+       bool letterChecker(string s1, string s2)
+       {
+        for(int i=0; i<s1.size(); i++)
+        {
+           if (s2.find(s1[i]) != std::string::npos) {
+                 size_t index = s2.find(s1[i]);
+                 s2.erase(index, 1);
+                 s1.erase(i, 1); 
+
+              } else {
+               return false;
+                    }
+        }
+        return true;
+       }
+    bool stringCheck(string s1, string s2) {
+        int cnt = 0;
+        for(int i = 0; i<s1.size(); i++)
+        {
+            if (s1[i] != s2[i]) 
+            {
+                cout<<"* "<<s1[i]<<" - "<<s2[i]<<endl;
+                cnt++;
+            }
+        }
+        cout<<"count - "<<cnt<<endl;
+        if ((cnt == 2) && (letterChecker(s1, s2)) && (letterChecker(s2, s1))) return true;
+        return false;
+    }
+    bool areAlmostEqual(string s1, string s2) {
+        if (s1 == s2) return true;
+        else if (s1.size() != s2.size()) return false;
+        return stringCheck(s1, s2);
+
+    }
+};
