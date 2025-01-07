@@ -1,0 +1,36 @@
+FIND THE DIFFERENCE OF TWO ARRAYS  -
+Given two 0-indexed integer arrays nums1 and nums2, return a list answer of size 2 where:
+
+answer[0] is a list of all distinct integers in nums1 which are not present in nums2.
+answer[1] is a list of all distinct integers in nums2 which are not present in nums1.
+Note that the integers in the lists may be returned in any order.
+
+
+Code - 
+class Solution {
+public:
+    vector<int> findy(vector<int>& a, vector<int>& b)
+    {
+        set<int> vecy;
+        for(auto i : a)
+        {
+            int cnt = count(b.begin(), b.end(), i);
+            if (cnt == 0) vecy.insert(i);
+        }
+        vector<int> myVector(vecy.begin(), vecy.end());
+    //     auto it = std::unique(vecy.begin(), vecy.end());
+
+    // // Erase the remaining elements from the vector
+    // vecy.erase(it, vecy.end());
+    //     //vecy.erase( unique( vecy.begin(), vecy.end() ), vecy.end() );
+        return myVector;
+    }
+    vector<vector<int>> findDifference(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> vecy1 = findy(nums1, nums2);
+        vector<int> vecy2 = findy(nums2, nums1);
+        vector<vector<int>> ans;
+        ans.push_back(vecy1);
+        ans.push_back(vecy2);
+        return ans;
+    }
+};
