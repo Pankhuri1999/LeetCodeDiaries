@@ -1,0 +1,42 @@
+MINIMUM SUM OF MOUNTAIN TRIPLETS I - 
+You are given a 0-indexed array nums of integers.
+
+A triplet of indices (i, j, k) is a mountain if:
+
+i < j < k
+nums[i] < nums[j] and nums[k] < nums[j]
+Return the minimum possible sum of a mountain triplet of nums. If no such triplet exists, return -1.
+
+
+Code -
+class Solution {
+public:
+    int minimumSum(vector<int>& nums) {
+        int miny = INT_MAX;
+        for(int i = 0; i<nums.size()-2; i++)
+        {
+            for(int j = i + 1; j<nums.size()-1; j++)
+            {
+                for(int k = j+1; k<nums.size(); k++)
+                {
+                    if ((nums[i] < nums[j]) && (nums[k] < nums[j]))// && (nums[i] + nums[j] +nums[k] < miny)) 
+                    {
+                        miny = min(miny,nums[i]+nums[j]+nums[k]);
+                    //    miny = nums[i] + nums[j] +nums[k];
+                    //    cout<<nums[i]<<"  -"<<nums[j]<<" -"<<nums[k]<<endl;
+                    }
+                }
+            }
+            // if ((nums[i] < nums[i+1]) && (nums[i+2] < nums[i+1]))
+            // {
+            //     if ((nums[i] + nums[i+1] +nums[i+2]) < miny) 
+            //     {
+            //         miny = nums[i] + nums[i+1] +nums[i+2];
+            //         cout<<nums[i]<<"  -"<<nums[i+1]<<" -"<<nums[i+2];
+            //     }
+            //     //miny = std::min(miny, nums[i] + nums[i+1] +nums[i+2]);
+            // }
+        }
+        return (miny == INT_MAX ? -1:miny);
+    }
+};
