@@ -1,0 +1,51 @@
+TRUNCATE SENTENCE
+A sentence is a list of words that are separated by a single space with no leading or trailing spaces. Each of the words consists of only uppercase and lowercase English letters (no punctuation).
+
+For example, "Hello World", "HELLO", and "hello world hello world" are all sentences.
+You are given a sentence s​​​​​​ and an integer k​​​​​​. You want to truncate s​​​​​​ such that it contains only the first k​​​​​​ words. Return s​​​​​​ after truncating it.
+
+Code - 
+class Solution {
+public:
+    string truncateSentence(string s, int k) {
+    //     vector<string> words;
+    // stringstream ss(s);
+    // string word;
+    // while (ss >> word) {
+    //     words.push_back(word);
+    // }
+    // string ans = "";
+    // for(int i = 0; i<k; i++)
+    // {
+    //     ans += (i=0) ? words[i] : ' '+words[i];  
+    // }
+    // return ans;
+
+//     int count = 0;
+  
+//   for (int i = 0; s[i] != '\0'; i++) {
+//     if (s[i] == ' ')
+//       count++;
+//   }
+//   int n = s.size(), cnt = 0, r ;
+//   for(int i=n; i>=0; i++)
+//   {
+//      if ((s[i] == ' ') && (cnt < count + 1 - k))
+//      {
+//         r = i;
+//         break;
+//      }
+//   }
+//   return s.substr(0, n-r+1);
+int cnt = 0;
+string ans = "";
+for(auto i : s)
+{
+    if (i ==  ' ') cnt++;
+    if (cnt == k) break;
+    ans = ans + i;
+}
+return ans;
+
+    }
+};
