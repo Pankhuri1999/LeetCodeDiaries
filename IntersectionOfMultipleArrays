@@ -1,0 +1,40 @@
+INTERSECTION OF MULTIPLE ARRAYS - 
+Given a 2D integer array nums where nums[i] is a non-empty array of distinct positive integers, return the list of integers that are present in each array of nums sorted in ascending order.
+
+Code -
+class Solution {
+public:
+    vector<int> intersection(vector<vector<int>>& nums) {
+        // if (nums.size() < 2) return {};
+        // sort(nums[0].begin(), nums[0].end());
+        // sort(nums[1].begin(), nums[0].end());
+        // vector<int> res;
+        // set_intersection(nums[0].begin(), nums[0].end(), nums[1].begin(),
+        //              nums[1].end(), back_inserter(res));
+        
+        
+        //     for(int i = 2; i<nums.size(); i++)
+        //     {
+        //         vector<int> temp;
+        //       set_intersection(res.begin(), res.end(), nums[i].begin(), nums[i].end(), back_inserter(temp));
+        //        res = temp;
+        //     }
+        
+        // return res;
+        vector<int> vecy;
+        map<int, int> mappy;
+        for(int i = 0 ; i<nums.size(); i++)
+        {
+            for(int j = 0; j<nums[i].size(); j++)
+            {
+                mappy[nums[i][j]]++;
+            }
+        }
+        for(auto i : mappy)
+        {
+            if (i.second == nums.size()) vecy.push_back(i.first);
+        }
+        sort(vecy.begin(), vecy.end());
+         return vecy;            
+    }
+};
