@@ -1,0 +1,21 @@
+SINGLE NUMBER III - 
+Given an integer array nums, in which exactly two elements appear only once and all the other elements appear exactly twice. Find the two elements that appear only once. 
+You can return the answer in any order.
+You must write an algorithm that runs in linear runtime complexity and uses only constant extra space.
+
+Code - 
+class Solution {
+public:
+    vector<int> singleNumber(vector<int>& nums) {
+        unordered_map<int, int> mappy;
+        for(int num : nums)
+        {
+            mappy[num]++;
+        }
+        vector<int> vecy;
+        for (const auto& pair : mappy) {
+             if (pair.second == 1) vecy.push_back(pair.first);
+    }
+    return vecy;
+    }
+};
