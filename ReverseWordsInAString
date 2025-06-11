@@ -1,0 +1,44 @@
+REVERSE WORDS IN A STRING -
+Given an input string s, reverse the order of the words.
+A word is defined as a sequence of non-space characters. The words in s will be separated by at least one space.
+Return a string of the words in reverse order concatenated by a single space.
+Note that s may contain leading or trailing spaces or multiple spaces between two words. The returned string should only have a single space separating the words. 
+Do not include any extra spaces.
+
+Code - 
+
+class Solution {
+public:
+    string reverseWords(string s) {
+        string word;
+        vector<string> vecy;
+
+        stringstream ss(s);
+
+    while (ss >> word) {
+        vecy.push_back(word);
+    }
+
+        for(string i : vecy)
+        {
+            cout<<i<<"----";
+        }
+       // reverse(vecy.begin(), vecy.end());
+        
+        string sen = "";
+        for (int i = vecy.size() - 1; i >= 0; i--) {
+            sen += vecy[i];
+            if (i != 0) {
+                sen += " ";
+            }
+        }
+    //    for (size_t i = 0; i < vecy.size(); ++i) {
+    //     sen += vecy[i];
+    //     if (i < vecy.size() - 1) {
+    //         sen += " ";
+    //     }
+    // }
+    return sen;
+
+    }
+};
