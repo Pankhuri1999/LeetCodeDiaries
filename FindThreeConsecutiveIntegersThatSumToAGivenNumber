@@ -1,0 +1,21 @@
+FIND THREE CONSECUTIVE INTEGERS THAT SUM TO A GIVEN NUMBER -
+
+Given an integer num, return three consecutive integers (as a sorted array) that sum to num. If num cannot be expressed as the sum of three consecutive integers, return an empty array.
+
+
+Code- 
+class Solution {
+public:
+    vector<long long> sumOfThree(long long num) {
+        long long numy = num/3 - 1;
+        //vector<int> vecy = {numy, numy + 1, numy + 2};
+        vector<long long> vecy;
+        if (((3*numy) + 3) == num)
+        {
+            vecy.push_back(numy);
+            vecy.push_back(numy+1);
+            vecy.push_back(numy+2);
+        }
+        return vecy;
+    }
+};
