@@ -1,0 +1,21 @@
+NUMBER OF WAYS TO PENS AND PENCILS - 
+You are given an integer total indicating the amount of money you have. You are also given two integers cost1 and cost2 indicating the price of a pen and pencil respectively. 
+You can spend part or all of your money to buy multiple quantities (or none) of each kind of writing utensil.
+Return the number of distinct ways you can buy some number of pens and pencils.
+
+
+Code- 
+class Solution {
+public:
+    long long waysToBuyPensPencils(int total, int cost1, int cost2) {
+        long long cnt = 0;
+        int pen = total/cost1;
+        for(int i = pen; i>=0; i--)
+        {
+            long long pencil = ((total - (cost1*i))/cost2) + 1;
+           
+            cnt = cnt + pencil;
+        }
+        return cnt;
+    }
+};
