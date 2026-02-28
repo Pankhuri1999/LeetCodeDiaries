@@ -1,0 +1,34 @@
+Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
+
+
+Code -
+
+// https://leetcode.com/problems/top-k-frequent-elements/
+
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+
+        unordered_map<int, int> mapy;
+        for (int elem : nums) {
+        mapy[elem]++; 
+        }
+
+        int cnt = 0;
+        vector<pair<int, int>> vecy;
+        for(auto i : mapy)
+        {
+                vecy.push_back({i.second, i.first});
+        }
+        
+         vector<int> ans; 
+       
+        sort(vecy.begin(),vecy.end()); 
+        int m = vecy.size();
+        for(int i = m-1; i > m-k-1;i--){
+            ans.push_back(vecy[i].second); 
+        }
+        return ans;     
+
+    }
+};
