@@ -1,0 +1,51 @@
+Find Nearest Point That Has the Same X or Y Coordinate
+You are given two integers, x and y, which represent your current location on a Cartesian grid: (x, y). 
+You are also given an array points where each points[i] = [ai, bi] represents that a point exists at (ai, bi). 
+A point is valid if it shares the same x-coordinate or the same y-coordinate as your location.
+
+Return the index (0-indexed) of the valid point with the smallest Manhattan distance from your current location. 
+If there are multiple, return the valid point with the smallest index. If there are no valid points, return -1.
+The Manhattan distance between two points (x1, y1) and (x2, y2) is abs(x1 - x2) + abs(y1 - y2).
+
+Code -
+class Solution {
+public:
+    int nearestValidPoint(int x, int y, vector<vector<int>>& points) {
+        int n = INT_MAX, ans=-1, dist;
+        for(int i = 0; i<points.size(); i++)
+        {
+            if ((x == points[i][0]) || (y == points[i][1]))
+            {
+                dist = abs(x - points[i][0]) + abs(y - points[i][1]);
+                if (dist < n)
+                {
+                    n = dist;
+                    ans = i;
+                }
+            } 
+        }
+        return ans;
+        // vector<vector<int>> vecy;
+        // for(int i = 0; i<points.size(); i++)
+        // {
+        //     if ((x == points[i][0]) || (y == points[i][1]))
+        //     {
+        //         vecy.push_back(points[i]);
+        //     }
+        // }
+        // vector<int> miny;
+        // for(int i = 0; i<vecy.size(); i++)
+        // {
+        //     int dist = abs(x - vecy[i][0]) + abs(y - vecy[i][1]);
+        //     miny.push_back(dist);
+        //  //   cout<<" --  "<<vecy[i][0]<<" * "<<vecy[i][1]<<endl;
+        //   //  miny = min(miny, dist);
+        // }
+
+        // auto min_it = std::min_element(miny.begin(), miny.end());
+        // int min_index = std::distance(miny.begin(), min_it);
+        // int min_index = std::min_element(miny.begin(), miny.end()) - miny.begin();
+
+        // return vecy[min_index][0];
+    }
+};
